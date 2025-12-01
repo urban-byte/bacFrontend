@@ -45,16 +45,10 @@ onMounted(fetchVideos)
 
                 <div v-if="loadingInfo">Loading video info…</div>
 
-                <VideoPlayer
-                  v-if="selectedInfo"
-                  :source="API_BASE + selectedInfo.url"
-                  :type="selectedInfo.content_type"
-                  :fps="selectedInfo.fps"
-                  :annotations="selectedInfo.annotations"
-                  :group-annotations="selectedInfo.groupAnnotations"
-                  :baseWidth="selectedInfo.width"
-                  :baseHeight="selectedInfo.height"
-                />
+                <VideoPlayer v-if="selectedInfo" :source="API_BASE + selectedInfo.url" :type="selectedInfo.content_type"
+                  :fps="selectedInfo.fps" :annotations="selectedInfo.annotations"
+                  :group-annotations="selectedInfo.groupAnnotations" :baseWidth="selectedInfo.width"
+                  :baseHeight="selectedInfo.height" />
 
                 <!-- Graphs -->
                 <div v-if="selectedInfo" class="mt-6">
@@ -68,10 +62,7 @@ onMounted(fetchVideos)
                   <h3 class="text-subtitle-1 text-primary mb-2">
                     Track duration overview
                   </h3>
-                  <VideoTrackRangeChart
-                    :video-id="selectedVideo.id"
-                    :fps="selectedInfo.fps"
-                  />
+                  <VideoTrackRangeChart :video-id="selectedVideo.id" :fps="selectedInfo.fps" />
                 </div>
               </template>
 
@@ -82,20 +73,10 @@ onMounted(fetchVideos)
           </v-col>
 
           <v-col cols="12" md="3">
-            <VideoUploader
-              :uploading="uploading"
-              :uploadError="uploadError"
-              @upload="uploadVideo"
-            />
+            <VideoUploader :uploading="uploading" :uploadError="uploadError" @upload="uploadVideo" />
 
-            <VideoList
-              class="mt-4"
-              :videos="videos"
-              :selectedId="selectedVideo?.id"
-              :deletingId="deletingId"
-              @select="v => { selectedVideo.value = v; fetchVideoInfo(v.id); }"
-              @delete="deleteVideo"
-            />
+            <VideoList class="mt-4" :videos="videos" :selectedId="selectedVideo?.id" :deletingId="deletingId"
+              @select="v => { selectedVideo = v; fetchVideoInfo(v.id) }" @delete="deleteVideo" />
           </v-col>
         </v-row>
       </v-container>

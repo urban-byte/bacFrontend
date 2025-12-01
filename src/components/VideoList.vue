@@ -1,8 +1,17 @@
 <script setup>
 defineProps({
-  videos: Array,
-  selectedId: Number,
-  deletingId: Number
+  videos: {
+    type: Array,
+    default: () => []
+  },
+  selectedId: {
+    type: [String, Number],   // or just String
+    default: null
+  },
+  deletingId: {
+    type: [String, Number],   // or just String
+    default: null
+  }
 })
 
 defineEmits(['select','delete'])

@@ -58,19 +58,18 @@ export function useVideos(API_BASE) {
     }
   }
 
-  const fetchVideoGroups = async (id) => {
-    loadingI.value = true
-    selectedGroups.value = null
-    try {
-      const res = await fetch(`${API_BASE}/videos/${id}/group_boxes`)
-      if (!res.ok) throw new Error('Failed to load video group boxes')
-      selectedInfo.value = await res.json()
-    } catch (err) {
-      console.error(err)
-    } finally {
-      loadingInfo.value = false
-    }
+const fetchVideoGroups = async (id) => {
+  loadingInfo.value = true
+  try {
+    const res = await fetch(`${API_BASE}/videos/${id}/group_boxes`)
+    if (!res.ok) throw new Error('Failed to load video group boxes')
+    selectedInfo.value.groupAnnotations = await res.json()
+  } catch (err) {
+    console.error(err)
+  } finally {
+    loadingInfo.value = false
   }
+}
 
   const uploadVideo = async (file) => {
     if (!file) return
