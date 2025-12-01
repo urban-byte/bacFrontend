@@ -1,0 +1,8 @@
+:root {
+  --color-text: var(--vt-c-text-light-1); /* dark text */
+}
+
+body {
+  color: var(--color-text);
+  background: var(--color-background);
+}
