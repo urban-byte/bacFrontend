@@ -53,7 +53,6 @@ const props = defineProps({
   source: { type: String, required: true },
   type: { type: String, default: 'video/mp4' },
   fps: { type: Number, default: 60 },
-  // individual annotations: { [frameNo]: [{ id, fillColor: [r,g,b], bbox: [x1,y1,x2,y2] }, ...] }
   annotations: { type: Object, default: () => ({}) },
   // group annotations in the SAME shape as annotations above
   groupAnnotations: { type: Object, default: () => ({}) },

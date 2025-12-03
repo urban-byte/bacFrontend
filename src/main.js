@@ -2,7 +2,6 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
-// 👇 ADD THESE:
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
@@ -14,5 +13,4 @@ const vuetify = createVuetify({
   directives,
 })
 
-// 👇 mount with Vuetify
 createApp(App).use(vuetify).mount('#app')
